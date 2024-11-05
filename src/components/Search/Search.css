@@ -1,0 +1,24 @@
+#search-bar {
+  margin: auto;
+  padding: 1.2em 4em;
+  border-radius: 2em; 
+  background: #5c5c5c;
+  width: 40%;
+
+}
+
+
+#search-bar:after {
+  margin: auto;
+  content: "";
+  position: relative;
+  top: 0.2em;
+  right: 0.2em;
+
+}
+
+#search-box {
+  display: flex;
+  margin: 10em auto auto auto;
+
+}
