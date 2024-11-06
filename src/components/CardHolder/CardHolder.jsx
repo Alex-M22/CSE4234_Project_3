@@ -75,17 +75,25 @@ if (errs) {
     }
 }
 
-export function filter(){
+export function filter(preferences){
     
 
     // grabs value in search bar every time it changes
     const selection = document.querySelector("#search-bar").value;
     arts.map(article => {
         // grab card element by id
+
+
         let cc = document.getElementById(article.id); 
         cc.style.display = "flex";
+
+        if (!preferences.include(article.topic)) {
+            cc.style.display = "none";
+
+        }
+
         // if not in the current category, hide
-        if (String(article.grade) !== selection) {
+        if (String(article.grade) !== selection && selection !== "") {
             cc.style.display = "none";
         }
     })
