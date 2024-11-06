@@ -1,35 +1,24 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React, {useState, createContext} from 'react';
+import './User.css';
 
-function App() {
-  const [count, setCount] = useState(0)
+export const userPrefsContext = createContext();
 
-  return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+function User() {
+// This can be altered in preferences onclick
+    const [userPrefs, setUserPrefs] = useState([
+        {science: true},
+        {technology: true},
+        {health: true},
+        {world: true},
+        {entertainment: true},
+        {sports: true},
+        {business: true},
+        {national: true},
+    ]);
+
+    return (
+        <userPrefsContext.Provider value={{userPrefs, setUserPrefs}}></userPrefsContext.Provider>
+    );
 }
 
-export default App
+export default User
