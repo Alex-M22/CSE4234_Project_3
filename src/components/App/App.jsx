@@ -10,6 +10,7 @@ function App() {
 
   return (
     <>
+      <Navigation/>
     <Preferences/>
     <Search/>
     <CardHolder/>
