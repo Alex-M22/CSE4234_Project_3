@@ -3,6 +3,7 @@ import './App.css'
 import Search from '../Search/Search.jsx'
 import CardHolder from '../CardHolder/CardHolder.jsx'
 import Preferences from '../Preferences/Preferences.jsx'
+import Navigation from "../Navigation/Navigation.jsx";
 
 
 function App() {
@@ -10,6 +11,7 @@ function App() {
 
   return (
     <>
+      <Navigation/>
     <Preferences/>
     <Search/>
     <CardHolder/>
