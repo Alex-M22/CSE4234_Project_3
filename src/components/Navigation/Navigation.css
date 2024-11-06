@@ -1,5 +1,9 @@
-#preferences {
+#preferences-button {
   position: absolute;
+  background-color: #5c5c5c;
+  color: white;
+  border-radius: 5px;
+  padding: 5px;
   top: 50px;
   right: 50px;
   z-index: 3;
