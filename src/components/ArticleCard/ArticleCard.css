@@ -6,7 +6,7 @@
   overflow: hidden;
   margin: 1em;
   box-shadow: 0 0.25em 0.5em rgba(0, 0, 0, 0.3);
-  max-width: 25em; /* Approx. 400px */
+  max-width: 25em;
   font-family: Arial, sans-serif;
 }
 
