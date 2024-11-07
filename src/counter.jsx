@@ -1,4 +1,13 @@
 
+/*
+
+these are the calls
+                            words : countWords(art.content),
+                            sentences : countSentences(art.content),
+                            syllables : countSyllables(art.content),
+                            flesch : computeFleschIndex(countWords(art.content),countSentences(art.content), countSyllables(art.content)),
+                            grade : classifyArticleReadability(countWords(art.content),countSentences(art.content), countSyllables(art.content)),
+*/
 
 function countWords(article){
     return 1;
