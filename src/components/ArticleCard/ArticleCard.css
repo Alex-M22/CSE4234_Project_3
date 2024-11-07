@@ -33,11 +33,10 @@
   border-radius: 0.5em 0.5em 0.5em 0.5em;
   padding: 0.25em; /* To make more prettyer with rounded corners + padding */
   position: absolute;
-  top: 1.5em;
-  left: 1.5em;
+  top: 1em;
+  left: 1em;
   color: #ffffff;
-  font-size: 0.9em;
-  font-weight: bold;
+  font-size: 1.1em;
   font-family: Arial, sans-serif;
 }
 
