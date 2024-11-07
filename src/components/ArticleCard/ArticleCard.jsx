@@ -12,10 +12,10 @@ function ArticleCard(props) {
   const mainUrl = new URL(link).origin;
 
   const newDate = new Date(date).toLocaleDateString('en-US', {
-    weekday: 'long',  // "Monday"
-    year: 'numeric',  // "2024"
-    month: 'long',    // "November"
-    day: 'numeric'    // "7"
+    weekday: 'long',
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
   });
 
   return (
