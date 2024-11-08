@@ -1,0 +1,43 @@
+.Preferences-Box {
+    background-color: #444444;
+    position: absolute;
+    top: 30%;
+    left: 22%;
+    padding-right: 8%;
+    border-radius: 10px;
+    padding: 50px;
+}
+
+#Exit {
+    position: absolute;
+    right: 3%;
+    top: 3%;
+}
+
+#Header {
+    position: absolute;
+    bottom: 75%;
+    left: 25%;
+}
+
+.td-border {
+    border: white 1px solid;
+    border-radius: 10px;
+    padding: 0 5px 0 5px;
+    text-align: center;
+    align-items: center;
+}
+
+.Icons {
+    border: white 1px solid;
+    padding: 5px;
+    border-radius: 10px;
+    display: inline-block;
+}
+
+.td-border p{
+    display: inline-block;
+    position: relative;
+    bottom: 20%;
+    left: 2%;
+}
