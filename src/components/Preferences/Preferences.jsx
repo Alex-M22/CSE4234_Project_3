@@ -9,7 +9,6 @@ import {
     FcLike,
     FcBiotech,
     FcLandscape,
-    FcCheckmark
 } from "react-icons/fc";
 import { FaEarthAmericas } from "react-icons/fa6";
 import './Preferences.css';
@@ -17,7 +16,6 @@ import {userPrefsContext} from "../User/User.jsx";
 
 function Preferences({setPrefsVisible}) {
   const {userPrefs, setUserPrefs} = useContext(userPrefsContext);
-  const [isChecked, setCheck] = useState([false, false, false, false, false, false, false, false]);
 
   // Set user context variable to true or false for filtering, and a corresponding checkmark
   // Spread by dr fitz for shallow copy
