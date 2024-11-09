@@ -1,0 +1,34 @@
+div.article {
+    margin-left: auto;
+    margin-right: auto;
+    width: 1000px;
+    justify-content: center;
+    padding-bottom: 25px;
+    padding-top: 25px;
+}
+
+.article img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
+
+.article h1, .article p, .article tr, .article td {
+    text-align: center;
+    padding: 0.5em;
+}
+
+.article #content {
+    text-align: left;
+}
+
+.article table {
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#odd-rows {
+    background: gray;
+}

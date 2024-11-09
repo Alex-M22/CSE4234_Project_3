@@ -2,13 +2,11 @@ import {useState, useEffect, useContext} from 'react'
 import './CardHolder.css'
 import {countWords, countSentences, countSyllables, computeFleschIndex, classifyArticleReadability} from './../../counter.jsx'
 import ArticleCard from './../ArticleCard/ArticleCard.jsx'
-import {userPrefsContext} from "../User/User.jsx";
-
 // global list
 let arts = [];
 
 
-export default function CardHolder(props) {
+export default function CardHolder({setIsDisplayed, props}) {
 
     // class constants
     const [articles, setArticles] = useState([]);
@@ -68,7 +66,8 @@ if (errs) {
         return (
           <div id="card-holder">
         {articles.map(art => {
-          return <ArticleCard data={art} key={art.id} />; 
+          // Send in prop to Article
+          return <ArticleCard data={art} key={art.id} setIsDisplayed={setIsDisplayed}/>;
         })}
         </div>
         );

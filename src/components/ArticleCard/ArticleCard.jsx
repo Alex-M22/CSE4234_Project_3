@@ -1,10 +1,12 @@
 import { useState } from 'react'
 import './ArticleCard.css'
-import Cardholder from '../CardHolder/CardHolder.jsx'
-
+import {useCardContext} from '../cardContext/CardContext'
 // 42414c
 
-function ArticleCard(props) {
+function ArticleCard({setIsDisplayed, ...props}) {
+  // Use context to set current card information
+  const { cardInfo, setCardInfo } = useCardContext();
+
   const [count, setCount] = useState(0)
 
   // image, tag, link, title, date, excerpt
@@ -27,7 +29,8 @@ function ArticleCard(props) {
       </div>
       <div className="article-content">
         <p className="article-url"><a href={link} target="_blank" rel="noopener noreferrer">{mainUrl}</a></p>
-        <h2 className="article-title">{title}</h2>
+        {/* Set article contents once a file is clicked on*/}
+        <h2 className="article-title" onClick={() => {setIsDisplayed(true); setCardInfo(props.data)}}>{title}</h2>
         <small className="article-date">{newDate}</small>
         <p className="article-excerpt">{excerpt || "Something went wrong, please try again later."}</p>
       </div>

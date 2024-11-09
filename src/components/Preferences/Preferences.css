@@ -16,6 +16,10 @@
     top: 3%;
 }
 
+#Exit:hover {
+    cursor: pointer;
+}
+
 #Header {
     position: absolute;
     bottom: 75%;
@@ -28,6 +32,11 @@
     padding: 0 5px 0 5px;
     text-align: center;
     align-items: center;
+}
+
+.td-border:hover {
+    background-color: gray;
+    cursor: pointer;
 }
 
 .Icons {

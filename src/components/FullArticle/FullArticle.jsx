@@ -1,35 +1,55 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import './FullArticle.css'
+import {useCardContext} from '../cardContext/CardContext';
 
-function App() {
-  const [count, setCount] = useState(0)
+export const FullArticle = ({isDisplayed}) => {
+      const {cardInfo} = useCardContext();
 
-  return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+      const newDomain = () => new URL(cardInfo['link'].origin);
+      // Gotten from ArticleCard.jsx
+      const newDate = new Date(cardInfo['date']).toLocaleDateString('en-US', {
+            weekday: 'long',
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric'
+      });
 
-export default App
+      // Topic, link, date, domain, title, lang, image, content, words, sentences, syllables, flesch, grade, excerpt, id
+      return (
+          isDisplayed && (
+          <div class='article'>
+                <img src={cardInfo['image']}/>
+                <p id='link'>{cardInfo['domain']}</p>
+                <h1 id='title'>{cardInfo['title']}</h1>
+                <p id='date'>{newDate}</p>
+                <p id='topic'>{cardInfo['topic']}</p>
+                <p id='content'>{cardInfo['content']}</p>
+                <table>
+                      <tbody>
+                        <tr id="odd-rows">
+                              <td>Word Count</td>
+                              <td>{cardInfo['words']}</td>
+                        </tr>
+                        <tr id="even-rows">
+                              <td>Sentence Count</td>
+                              <td>{cardInfo['sentences']}</td>
+                        </tr>
+                        <tr id="odd-rows">
+                              <td>Syllable Count</td>
+                              <td>{cardInfo['syllables']}</td>
+                        </tr>
+                        <tr id="even-rows">
+                              <td>Flesch Index</td>
+                              <td>{cardInfo['flesch']}</td>
+                        </tr>
+                        <tr id="odd-rows">
+                              <td>Grade level</td>
+                              <td>{cardInfo['grade']}</td>
+                        </tr>
+                      </tbody>
+                </table>
+          </div>
+          )
+      )}
+
+export default FullArticle;

@@ -14,6 +14,7 @@ import { FaEarthAmericas } from "react-icons/fa6";
 import './Preferences.css';
 import {userPrefsContext} from "../User/User.jsx";
 
+// eslint-disable-next-line react/prop-types
 function Preferences({setPrefsVisible}) {
   const {userPrefs, setUserPrefs} = useContext(userPrefsContext);
 
