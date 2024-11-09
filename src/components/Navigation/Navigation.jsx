@@ -4,7 +4,7 @@ import './Navigation.css'
 function Navigation({setPrefsVisible}) {
     const [count, setCount] = useState(0)
     const displayPrefs = () => {
-        {/* Set to the opposite of its previous visibility state*/}
+        // Set to the opposite of its previous visibility state*
         setPrefsVisible((isVisible) => !isVisible)
     }
     return (
@@ -14,5 +14,4 @@ function Navigation({setPrefsVisible}) {
         </>
     )
 }
-
 export default Navigation

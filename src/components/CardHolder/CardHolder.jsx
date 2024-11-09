@@ -1,7 +1,8 @@
-import { useState,useEffect } from 'react'
+import {useState, useEffect, useContext} from 'react'
 import './CardHolder.css'
 import {countWords, countSentences, countSyllables, computeFleschIndex, classifyArticleReadability} from './../../counter.jsx'
 import ArticleCard from './../ArticleCard/ArticleCard.jsx'
+import {userPrefsContext} from "../User/User.jsx";
 
 // global list
 let arts = [];
@@ -76,7 +77,8 @@ if (errs) {
 }
 
 export function filter(preferences){
-    
+
+    const {userPrefs, setUserPrefs} = useContext(userPrefsContext);
 
     // grabs value in search bar every time it changes
     const selection = document.querySelector("#search-bar").value;
@@ -87,7 +89,8 @@ export function filter(preferences){
         let cc = document.getElementById(article.id); 
         cc.style.display = "flex";
 
-        if (!preferences.include(article.topic)) {
+        // Get the value of the topic in preferences, and if it is false, do not display
+        if (userPrefs[article.topic] === false) {
             cc.style.display = "none";
 
         }
