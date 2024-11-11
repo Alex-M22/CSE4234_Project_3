@@ -8,6 +8,9 @@
   box-shadow: 0 0.25em 0.5em rgba(0, 0, 0, 0.3);
   max-width: 25em;
   font-family: Arial, sans-serif;
+  width: 22%;
+  display: none;
+  min-width: 300px;
 }
 
 
@@ -31,7 +34,7 @@
 
   background-color: rgba(0, 0, 0, 0.6); /*Now I know Dr. Fitz didnt have this but we are having white on white images sometimes! And we cannot see the tag! */
   border-radius: 0.5em 0.5em 0.5em 0.5em;
-  padding: 0.25em; /* To make more prettyer with rounded corners + padding */
+  padding: 0.25em; /* To make more prettier with rounded corners + padding */
   position: absolute;
   top: 1em;
   left: 1em;
@@ -79,4 +82,11 @@
 
 h2:hover {
   cursor:pointer
+}
+
+@media (max-width: 768px) {
+
+.article-card {
+  width: 95%;
+}
 }

@@ -2,15 +2,18 @@ import { useState, useEffect, useContext } from 'react';
 import './Search.css';
 import {filter} from './../CardHolder/CardHolder.jsx';
 import CardHolder from './../CardHolder/CardHolder.jsx';
+import User from '../User/User.jsx';
 
 
 function Search() {
+    const [topics, setTopics] = useContext(User);
+
 
     return (
         <div id="search-box">
-            <select id="search-bar" onChange={() => filter()}>
+            <select id="search-bar" onChange={() => filter(topics)}>
                 <option value="">Select an Option</option>  
-                <option value="5">5th grade</option>
+                <option value="5th grade">5th grade</option>
                 <option value="6th grade">6th grade</option>
                 <option value="7th grade">7th grade</option>
                 <option value="8th grade & 9th grade">8th & 9th grade</option>

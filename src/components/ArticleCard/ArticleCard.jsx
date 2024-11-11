@@ -1,13 +1,9 @@
 import { useState } from 'react'
 import './ArticleCard.css'
-import {useCardContext} from '../cardContext/CardContext'
-// 42414c
+import { showFull } from './../App/App.jsx'
 
-function ArticleCard({setIsDisplayed, ...props}) {
-  // Use context to set current card information
-  const { cardInfo, setCardInfo } = useCardContext();
+function ArticleCard(props) {
 
-  const [count, setCount] = useState(0)
 
   // image, tag, link, title, date, excerpt
   const { topic, title, link, date, image, excerpt } = props.data;
@@ -20,9 +16,8 @@ function ArticleCard({setIsDisplayed, ...props}) {
     day: 'numeric'
   });
 
-  return (
-    <>
-    <div className="article-card">
+  return (   
+    <div id={props.data.id} className="article-card">
       <div className="article-image-container">
         <img src={image} alt="Article" className="article-image" />
         <span className="article-topic">{topic}</span>
@@ -30,12 +25,11 @@ function ArticleCard({setIsDisplayed, ...props}) {
       <div className="article-content">
         <p className="article-url"><a href={link} target="_blank" rel="noopener noreferrer">{mainUrl}</a></p>
         {/* Set article contents once a file is clicked on*/}
-        <h2 className="article-title" onClick={() => {setIsDisplayed(true); setCardInfo(props.data)}}>{title}</h2>
+        <h2 className="article-title" onClick={() => showFull(props.data)}>{title}</h2>
         <small className="article-date">{newDate}</small>
         <p className="article-excerpt">{excerpt || "Something went wrong, please try again later."}</p>
       </div>
     </div>
-    </>
   )
 }
 

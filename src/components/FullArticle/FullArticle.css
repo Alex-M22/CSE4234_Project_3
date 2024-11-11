@@ -1,34 +1,61 @@
-div.article {
-    margin-left: auto;
-    margin-right: auto;
-    width: 1000px;
+.fullArticle {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
     justify-content: center;
     padding-bottom: 25px;
     padding-top: 25px;
+    text-align: center;
 }
 
-.article img {
+.fullArticle img {
     display: block;
     margin-left: auto;
     margin-right: auto;
     width: 50%;
 }
 
-.article h1, .article p, .article tr, .article td {
-    text-align: center;
-    padding: 0.5em;
-}
 
-.article #content {
-    text-align: left;
-}
+.fullArticle table {
 
-.article table {
     position: relative;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 1em auto;
+    width: 50%;
 }
 
-#odd-rows {
-    background: gray;
+.fullArticle p {
+    width: 40%;
+    margin: 1em auto; 
+}
+
+.odd-rows {
+    background: #555;
+}
+
+.backButton {
+    margin-left: 1em;
+    margin-top: 1em; 
+    background-color: #444;
+    color: white;
+    border-radius: 0.75em;
+    padding: 0.25em 0.75em;
+    z-index: 3;
+    border: 1px solid white;
+    transition: 0.3s;
+
+}
+
+.backButton:hover {
+    transition: 0.3s;
+    box-shadow: black 3px 2px 2px 1px;
+    cursor: pointer;
+
+}
+
+@media (max-width: 768px) {
+
+    .fullArticle p {
+        width: 90%;
+    }
+
 }

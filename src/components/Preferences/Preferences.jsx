@@ -12,75 +12,75 @@ import {
 } from "react-icons/fc";
 import { FaEarthAmericas } from "react-icons/fa6";
 import './Preferences.css';
-import {userPrefsContext} from "../User/User.jsx";
+import User from "./../User/User.jsx"
+import {filter} from './../CardHolder/CardHolder.jsx';
 
-// eslint-disable-next-line react/prop-types
-function Preferences({setPrefsVisible}) {
-  const {userPrefs, setUserPrefs} = useContext(userPrefsContext);
 
-  // Set user context variable to true or false for filtering, and a corresponding checkmark
-  // Spread by dr fitz for shallow copy
-  const handleCheck = (key) => {
-    setUserPrefs((prevState) => ({
-        ...prevState,
-        [key]: !prevState[key],
-    }));
-  };
+function Preferences() {
 
-  // Remove visibility with 'X' button
-  const displayPrefs = () => {
-      {/* Set to the opposite of its previous visibility state*/}
-      setPrefsVisible((isVisible) => !isVisible)
-  }
+  const [topics, setTopics] = useContext(User);
 
   return(
-      <div className="Preferences-Box">
-        <TbCircleLetterX size={20} id="Exit" onClick={displayPrefs}/>
-        <p id="Header"><strong>Select news categories to fine-tune your feed</strong></p>
-        <table id="Preferences">
-            <tbody>
-                <tr>
-                    {/*On click, if the index (passed in as a prop) is checked (state), display, or else just show icon* and context*/}
-                    <td className="td-border" onClick={() => handleCheck("SCIENCE")}>
-                        {userPrefs["SCIENCE"] ? <FcOk className="Icons"/> : <FcBiotech className="Icons"/>}
-                        <p>SCIENCE</p>
-                    </td>
-                    <td className="td-border" onClick={() => handleCheck("ELECTRONICS")}>
-                        {userPrefs["ELECTRONICS"] ? <FcOk className="Icons"/> : <FcElectronics className="Icons"/>}
-                        <p>TECHNOLOGY</p>
-                    </td>
-                    <td className="td-border" onClick={() => handleCheck("HEALTH")}>
-                        {userPrefs["HEALTH"] ? <FcOk className="Icons"/> : <FcLike className="Icons"/>}
-                        <p>HEALTH</p>
-                    </td>
-                    <td className="td-border" onClick={() => handleCheck("WORLD")}>
-                        {userPrefs["WORLD"] ? <FcOk className="Icons"/> : <FaEarthAmericas className="Icons"/>}
-                        <p>WORLD</p>
-                    </td>
-                    <td className="td-border" onClick={() => handleCheck("ENTERTAINMENT")}>
-                        {userPrefs["ENTERTAINMENT"] ? <FcOk className="Icons"/> : <FcFilm className="Icons"/>}
-                        <p>ENTERTAINMENT</p>
-                    </td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td className="td-border" onClick={() => handleCheck("SPORTS")}>
-                        {userPrefs["SPORTS"] ? <FcOk className="Icons"/> : <FcSportsMode className="Icons"/>}
-                        <p>SPORTS</p>
-                    </td>
-                    <td className="td-border" onClick={() => handleCheck("BUSINESS")}>
-                        {userPrefs["BUSINESS"] ? <FcOk className="Icons"/> : <FcBusiness className="Icons"/>}
-                        <p>BUSINESS</p>
-                    </td>
-                    <td className="td-border" onClick={() => handleCheck("NATION")}>
-                        {userPrefs["NATION"] ? <FcOk className="Icons"/> : <FcLandscape className="Icons"/>}
-                        <p>NATION</p>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-      </div>
+
+        <div id="preferences">
+            <TbCircleLetterX id="exit" onClick={() => {document.querySelector("#preferences").style.display = "none";}}/>
+            <p id="header"><strong>Select news categories to fine-tune your feed</strong></p>
+            <ul>
+            <li className="pref-li"
+                onClick={() => {topics.business = !topics.business; setTopics(topics); clicked("pref-b", "pref-b-ok", topics.business);filter(topics)}}>
+                <FcOk id="pref-b-ok" className="icons"/>
+                <FcBusiness id="pref-b" className="icons"/>
+                Business</li>
+            <li className="pref-li" onClick={() => {topics.entertainment = !topics.entertainment; setTopics(topics); clicked("pref-e", "pref-e-ok", topics.entertainment);filter(topics)}}>
+                <FcOk id="pref-e-ok" className="icons"/>
+                <FcFilm id="pref-e" className="icons"/>
+                Entertainment</li>
+            <li className="pref-li" onClick={() => {topics.health = !topics.health; setTopics(topics); clicked("pref-h", "pref-h-ok", topics.health);filter(topics)}}>
+                <FcOk id="pref-h-ok" className="icons"/>
+                <FcLike id="pref-h" className="icons"/>
+                Health</li>
+            <li className="pref-li" onClick={() => {topics.nation = !topics.nation; setTopics(topics); clicked("pref-n", "pref-n-ok", topics.nation);filter(topics)}}>
+                <FcOk id="pref-n-ok" className="icons"/>
+                <FcLandscape id="pref-n" className="icons"/>
+                Nation</li>
+            <li className="pref-li" onClick={() => {topics.science = !topics.science; setTopics(topics); clicked("pref-s", "pref-s-ok", topics.science);filter(topics)}}>
+                <FcOk id="pref-s-ok" className="icons"/>
+                <FcBiotech id="pref-s" className="icons"/>
+                Science</li>
+            <li className="pref-li" onClick={() => {topics.sports = !topics.sports; setTopics(topics); clicked("pref-p", "pref-p-ok", topics.sports);filter(topics)}}>
+                <FcOk id="pref-p-ok" className="icons"/>
+                <FcSportsMode id="pref-p" className="icons"/>
+                Sports</li>
+            <li className="pref-li" onClick={() => {topics.technology = !topics.technology; setTopics(topics); clicked("pref-t", "pref-t-ok", topics.technology);filter(topics)}}>
+                <FcOk id="pref-t-ok" className="icons"/>
+                <FcElectronics id="pref-t" className="icons"/>
+                Technology</li>
+            <li className="pref-li" onClick={() => {topics.world = !topics.world; setTopics(topics); clicked("pref-w", "pref-w-ok", topics.world);filter(topics)}}>
+                <FcOk id="pref-w-ok" className="icons"/>
+                <FaEarthAmericas id="pref-w" className="icons"/>
+                World</li>
+            </ul>
+        </div>
+
   );
 }
 
+function clicked(em, ch, b) {
+    let emoji = document.querySelector(`#${em}`);
+    
+    let check = document.querySelector(`#${ch}`);
+
+
+    if (b) {
+        emoji.style.display = "none";
+        check.style.display = "inline";
+    } else {
+        emoji.style.display = "inline";
+        check.style.display = "none";
+
+    }  
+
+}
+
 export default Preferences;
+

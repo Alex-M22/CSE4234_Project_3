@@ -1,13 +1,11 @@
 import { useState } from 'react'
 import './FullArticle.css'
-import {useCardContext} from '../cardContext/CardContext';
+import { showList } from './../App/App.jsx'
 
-export const FullArticle = ({isDisplayed}) => {
-      const {cardInfo} = useCardContext();
+export function FullArticle(props) {
 
-      const newDomain = () => new URL(cardInfo['link'].origin);
       // Gotten from ArticleCard.jsx
-      const newDate = new Date(cardInfo['date']).toLocaleDateString('en-US', {
+      const newDate = new Date(props.data.date).toLocaleDateString('en-US', {
             weekday: 'long',
             year: 'numeric',
             month: 'long',
@@ -16,40 +14,43 @@ export const FullArticle = ({isDisplayed}) => {
 
       // Topic, link, date, domain, title, lang, image, content, words, sentences, syllables, flesch, grade, excerpt, id
       return (
-          isDisplayed && (
-          <div class='article'>
-                <img src={cardInfo['image']}/>
-                <p id='link'>{cardInfo['domain']}</p>
-                <h1 id='title'>{cardInfo['title']}</h1>
+            <>
+            <button className="backButton" onClick={() => showList(props.data.id, props.yPos)}>Back</button>
+            <div className='fullArticle'>
+
+                <img src={props.data.image}/>
+                <p id='link'>{props.data.domain}</p>
+                <h1 id='title'>{props.data.title}</h1>
                 <p id='date'>{newDate}</p>
-                <p id='topic'>{cardInfo['topic']}</p>
-                <p id='content'>{cardInfo['content']}</p>
+                <p id='topic'>{props.data.topic}</p>
+                <p id='content'>{props.data.content}</p>
                 <table>
                       <tbody>
-                        <tr id="odd-rows">
+                        <tr className="odd-rows">
                               <td>Word Count</td>
-                              <td>{cardInfo['words']}</td>
+                              <td>{props.data.words}</td>
                         </tr>
-                        <tr id="even-rows">
+                        <tr className="even-rows">
                               <td>Sentence Count</td>
-                              <td>{cardInfo['sentences']}</td>
+                              <td>{props.data.sentences}</td>
                         </tr>
-                        <tr id="odd-rows">
+                        <tr className="odd-rows">
                               <td>Syllable Count</td>
-                              <td>{cardInfo['syllables']}</td>
+                              <td>{props.data.syllables}</td>
                         </tr>
-                        <tr id="even-rows">
+                        <tr className="even-rows">
                               <td>Flesch Index</td>
-                              <td>{cardInfo['flesch']}</td>
+                              <td>{props.data.flesch}</td>
                         </tr>
-                        <tr id="odd-rows">
+                        <tr className="odd-rows">
                               <td>Grade level</td>
-                              <td>{cardInfo['grade']}</td>
+                              <td>{props.data.grade}</td>
                         </tr>
                       </tbody>
                 </table>
           </div>
-          )
-      )}
+          </>
+      )
+}
 
 export default FullArticle;

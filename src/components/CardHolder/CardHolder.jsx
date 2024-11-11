@@ -2,6 +2,8 @@ import {useState, useEffect, useContext} from 'react'
 import './CardHolder.css'
 import {countWords, countSentences, countSyllables, computeFleschIndex, classifyArticleReadability} from './../../counter.jsx'
 import ArticleCard from './../ArticleCard/ArticleCard.jsx'
+import User from '../User/User.jsx';
+
 // global list
 let arts = [];
 
@@ -12,6 +14,7 @@ export default function CardHolder({setIsDisplayed, props}) {
     const [articles, setArticles] = useState([]);
     const [loading, setLoading] = useState(true);
     const [errs, setErrs] = useState(null);
+    const [topics, setTopics] = useContext(User);
 
     // uses useEffect (lol) to parse the json
     useEffect(() => {
@@ -67,7 +70,7 @@ if (errs) {
           <div id="card-holder">
         {articles.map(art => {
           // Send in prop to Article
-          return <ArticleCard data={art} key={art.id} setIsDisplayed={setIsDisplayed}/>;
+          return <ArticleCard data={art} key={art.id}/>;
         })}
         </div>
         );
@@ -77,25 +80,27 @@ if (errs) {
 
 export function filter(preferences){
 
-    const {userPrefs, setUserPrefs} = useContext(userPrefsContext);
 
     // grabs value in search bar every time it changes
     const selection = document.querySelector("#search-bar").value;
     arts.map(article => {
+        let f = preferences[article.topic.toLowerCase()];
+
+    
         // grab card element by id
 
 
         let cc = document.getElementById(article.id); 
-        cc.style.display = "flex";
+        cc.style.display = "block";
 
         // Get the value of the topic in preferences, and if it is false, do not display
-        if (userPrefs[article.topic] === false) {
+        if (f === false) {
             cc.style.display = "none";
 
         }
 
         // if not in the current category, hide
-        if (String(article.grade) !== selection && selection !== "") {
+        if (String(article.grade) !== selection) {
             cc.style.display = "none";
         }
     })

@@ -1,55 +1,74 @@
-.Preferences-Box {
+#preferences {
     background-color: #444444;
-    position: fixed;
-    top: 25%;
-    left: 25%;
-    padding-right: 8%;
-    border-radius: 10px;
-    padding: 50px;
-    z-index: 99;
+    width: 40%;
+    border-radius: 0.7em;
+    margin: -4em auto;
+    position: relative;
+    z-index: 3;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    display: none;
+    flex-direction: column;
 }
 
-#Exit {
+#exit {
     position: absolute;
-    right: 3%;
-    top: 3%;
+    right: 0%;
+    z-index: 5;
+    font-size: 3em;
 }
 
-#Exit:hover {
+#exit:hover {
     cursor: pointer;
 }
 
-#Header {
-    position: absolute;
-    bottom: 75%;
-    left: 25%;
+#header {
+    padding-top: 0.2em; 
+    text-align: center;
 }
 
-.td-border {
-    border: white 1px solid;
-    border-radius: 10px;
-    padding: 0 5px 0 5px;
-    text-align: center;
+#preferences ul {
+    padding: 2em;
+    list-style-type: none;
+    margin: 0;
+    overflow: hidden;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+
+}
+
+
+.icons {
+    border-radius: 50%;
+    padding: 0.3em;
+    font-size: 1.3em;
+    background-color: #222;
+    display: inline-block;
+    margin: 0.2em;
+}
+
+.pref-li {
+    display: flex;
+    float: left;
+    padding: 0.4em;
+    border-radius: 3em;
+    border: 0.1em white solid;
+    margin: 0.2em;
     align-items: center;
 }
 
-.td-border:hover {
-    background-color: gray;
-    cursor: pointer;
+#pref-b-ok,#pref-h-ok,#pref-e-ok,#pref-s-ok,#pref-p-ok,#pref-t-ok,#pref-w-ok, #pref-n-ok {
+    display: none;
 }
 
-.Icons {
-    border: white 1px solid;
-    padding: 5px;
-    border-radius: 10px;
-    display: inline-block;
-}
+@media (max-width: 768px) {
+    .pref-li {
+        width: 100%;
+    }
 
-.td-border p{
-    display: inline-block;
-    position: relative;
-    font-family: Arial, sans-serif;
-    bottom: 20%;
-    left: 2%;
+    #header {
+        margin-top: 3.5em;
+    }
+
 }

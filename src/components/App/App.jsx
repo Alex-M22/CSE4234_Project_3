@@ -1,53 +1,69 @@
-import {createContext, useContext, useState} from 'react'
+import { useState, useContext } from 'react'
+import ReactDOM from 'react-dom/client'
 import './App.css'
 import Search from '../Search/Search.jsx'
 import CardHolder from '../CardHolder/CardHolder.jsx'
+import FullArticle from './../FullArticle/FullArticle.jsx'
 import Navigation from '../Navigation/Navigation.jsx'
 import Preferences from '../Preferences/Preferences.jsx'
-import User from "../User/User.jsx";
-import FullArticle from "../FullArticle/FullArticle.jsx";
-import {CardContextProvider} from '../cardContext/CardContext'
+import User from '../User/User.jsx'
+
+export const root = ReactDOM.createRoot(document.querySelector('main'));
+export let fullRoot = ReactDOM.createRoot(document.querySelector('#fullDiv'));
+
 
 export default function App(props) {
-    const [count, setCount] = useState(0);
-    // Preferences visibility state
-    const [prefsVisible, setPrefsVisible] = useState(false);
-    // Card visibility state
-    const [isDisplayed, setIsDisplayed] = useState(false);
+    const [topics, setTopics] = useState({
+        science: false,
+        technology: false,
+        health: false,
+        world: false,
+        entertainment: false,
+        sports: false,
+        business: false,
+        nation: false,
+    });
 
-    // If article is opened, only render the article
-    if (!isDisplayed) {
-        return (
-            <User>
-                <div id="app">
-                    {/*Preventing ArticleCard and FullArticle from displaying while passing CardHolder a hook to reveal FullArticle*/}
-                    <CardContextProvider>
-                        <FullArticle isDisplayed={isDisplayed}/>
-                        {/* Passing down prop for opening preferences button*/}
-                        <Navigation setPrefsVisible={setPrefsVisible}/>
-                        {/* Passing down prop for exiting preferences*/}
-                        {prefsVisible && <Preferences setPrefsVisible={setPrefsVisible}/>}
-                        <Search/>
-                        {/*Pass down state variable method to Article Card through CardHolder*/}
-                        <CardHolder setIsDisplayed={setIsDisplayed}/>
-                    </CardContextProvider>
-                </div>
-            </User>
+    return (
+        <User.Provider value={[topics, setTopics]}>
+        <div id="app">
+        <Navigation/>
+        <Search/>
+        <Preferences/>
+        <CardHolder/>
+        </div>
+        </User.Provider>
         )
-    } else {
-        return (
-            <User>
-                <div id="app">
-                    {/*Preventing ArticleCard and FullArticle from displaying while passing CardHolder a hook to reveal FullArticle*/}
-                    <CardContextProvider>
-                        <FullArticle isDisplayed={isDisplayed}/>
-                        {prefsVisible && <Preferences setPrefsVisible={setPrefsVisible}/>}
-                    </CardContextProvider>
-                </div>
-            </User>
-        )
-    };
+}
 
-};
 
+
+export function showFull(data) {
+
+    const el = document.getElementById(data.id);
+    const yPos = el.getBoundingClientRect().top;
+    const bodPos = document.body.getBoundingClientRect().top;
+    document.querySelector("#app").style.display = "none";
+    document.querySelector("header").style.display = "none";
+
+    fullRoot.render(
+        <FullArticle data={data} yPos={yPos - bodPos}/>
+    );
+            
+
+
+   
+}
+
+export function showList(id, yPos) {
+
+    fullRoot.unmount()
+    fullRoot = ReactDOM.createRoot(document.querySelector('#fullDiv'));
+    document.querySelector("#app").style.display = "block";
+    document.querySelector("header").style.display = "flex";
+
+    scroll(0,yPos);
+
+   
+}
 
