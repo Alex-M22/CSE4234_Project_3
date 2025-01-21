@@ -1,92 +1,92 @@
 
 .article-card {
-  background-color: #42414c;
-  color: #e0e0e0;
-  border-radius: 0.75em;
-  overflow: hidden;
-  margin: 1em;
-  box-shadow: 0 0.25em 0.5em rgba(0, 0, 0, 0.3);
-  max-width: 25em;
-  font-family: Arial, sans-serif;
-  width: 22%;
-  display: none;
-  min-width: 300px;
+    background-color: #42414c;
+    color: #e0e0e0;
+    border-radius: 0.75em;
+    overflow: hidden;
+    margin: 1em;
+    box-shadow: 0 0.25em 0.5em rgba(0, 0, 0, 0.3);
+    max-width: 25em;
+    font-family: Arial, sans-serif;
+    width: 22%;
+    display: none;
+    min-width: 300px;
 }
 
 
 .article-image-container {
-  position: relative;
-  width: 100%;
-  height: 11.25em;
-  overflow: hidden;
+    position: relative;
+    width: 100%;
+    height: 11.25em;
+    overflow: hidden;
 }
 
 .article-image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  border-radius: 0.75em 0.75em 0 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    border-radius: 0.75em 0.75em 0 0;
 }
 
 
 .article-topic {
 
-  background-color: rgba(0, 0, 0, 0.6); /*Now I know Dr. Fitz didnt have this but we are having white on white images sometimes! And we cannot see the tag! */
-  border-radius: 0.5em 0.5em 0.5em 0.5em;
-  padding: 0.25em; /* To make more prettier with rounded corners + padding */
-  position: absolute;
-  top: 1em;
-  left: 1em;
-  color: #ffffff;
-  font-size: 1.1em;
-  font-family: Arial, sans-serif;
+    background-color: rgba(0, 0, 0, 0.6); /*Now I know Dr. Fitz didnt have this but we are having white on white images sometimes! And we cannot see the tag! */
+    border-radius: 0.5em 0.5em 0.5em 0.5em;
+    padding: 0.25em; /* To make more prettier with rounded corners + padding */
+    position: absolute;
+    top: 1em;
+    left: 1em;
+    color: #ffffff;
+    font-size: 1.1em;
+    font-family: Arial, sans-serif;
 }
 
 
 .article-content {
-  padding: 1em;
+    padding: 1em;
 }
 
 
 .article-url a {
-  color: #1e90ff;
-  text-decoration: none;
-  font-size: 0.9em;
+    color: #1e90ff;
+    text-decoration: none;
+    font-size: 0.9em;
 }
 
 .article-url a:hover {
-  text-decoration: underline;
+    text-decoration: underline;
 }
 
 
 .article-title {
-  font-size: 1.2em;
-  margin-top: 0.5em;
-  color: #f1f1f1;
+    font-size: 1.2em;
+    margin-top: 0.5em;
+    color: #f1f1f1;
 }
 
 
 .article-date {
-  color: #cfcfcf;
-  font-size: 0.8em;
-  margin: 0.25em 0;
+    color: #cfcfcf;
+    font-size: 0.8em;
+    margin: 0.25em 0;
 }
 
 
 .article-excerpt {
-  color: #b3b3b3;
-  font-size: 0.95em;
-  margin-top: 0.5em;
+    color: #b3b3b3;
+    font-size: 0.95em;
+    margin-top: 0.5em;
 }
 
 h2:hover {
-  cursor:pointer
+    cursor:pointer
 }
 
 @media (max-width: 768px) {
 
-.article-card {
-  width: 95%;
-}
+    .article-card {
+        width: 95%;
+    }
 }
